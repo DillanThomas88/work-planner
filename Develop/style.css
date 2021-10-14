@@ -1,0 +1,109 @@
+:root {
+  --save:#cccccc;
+  --delete: #000000;
+  --time: #000000;
+  --past: #e4e4e4;
+  --present: #fae5a0;
+  --future: #dbe3f0;
+  --hover:#ffffff;
+  --error:#fff3f3;
+
+}
+li {
+  padding: 0px 10px;
+  font-size: 1.5rem;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+}
+.input-group {
+  padding: 5px 0px;
+}
+
+textarea {
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
+}
+
+
+.description {
+  white-space: pre-wrap;
+}
+img {
+  pointer-events: none;
+  filter: var(--save);
+  width: 25%;
+}
+button:hover{
+  background-color: var(--save);
+}
+
+.day {
+  font-size: 2rem;
+}
+.mycontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 1% 5%;
+}
+.form-control {
+  height: 75px;
+}
+.input-group-text {
+  background-color: var(--future);
+  font-size: 2rem;
+}
+.time-block {
+  text-align: center;
+  border-radius: 15px;
+}
+.jumbotron {
+  padding-top: 25px;
+}
+#currentDay {
+  padding-top: 25px;
+  font-size: 2rem;
+}
+
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;
+}
+
+.hour {
+  background-color: #ffffff;
+  color: #000000;
+  border-top: 1px dashed #000000;
+}
+
+.past {
+  background-color:var(--past);
+  color: white;
+}
+
+.present {
+  background-color: var(--present);
+  color: white;
+}
+
+.future {
+  background-color: var(--future);
+  color: white;
+}
+
+.saveBtn {
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #06aed5;
+  color: white;
+}
