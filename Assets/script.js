@@ -7,7 +7,7 @@ const remove = '../Assets/images/remove.svg'
 const done = '../Assets/images/done.svg'
 const colorPast = '#e7eaf0'
 const colorPresent = '#fae5a0'
-const colorFuture = '#dbe3f0'
+const colorFuture = '#d5e0f6'
 var timecheck = []
 
 
@@ -19,24 +19,30 @@ function SetCurrentTime() {
         const index = timecheck[i];
         const nextIndex = timecheck[i + 1]
         var time = moment(index, 'h:mma')
-        var temp = moment('8:45am', 'h:mma')
+        var nexttime = moment(nextIndex, 'h:mma')
         var parent = document.getElementById(index)
-        if (time.isAfter(moment())) {
+
+        if (moment().isSameOrAfter(nexttime)) {
+            parent.children[0].style.backgroundColor = colorPast
+            parent.children[2].style.backgroundColor = colorPast
+            parent.children[2].children[0].children[0].setAttribute('src', done)
+            parent.children[1].disabled = true
+            parent.children[1].setAttribute('placeholder','Closed')
+            parent.children[2].children[0].disabled = true
+
+        } else if (moment().isSameOrAfter(time) && moment().isSameOrBefore(nexttime)) {
+            parent.children[0].style.backgroundColor = colorPresent
+            parent.children[2].style.backgroundColor = colorPresent
+            parent.children[2].children[0].children[0].setAttribute('src', done)
+            parent.children[1].disabled = true
+            parent.children[1].setAttribute('placeholder','In Progress..')
+            parent.children[2].children[0].disabled = true
+
+        } else {
             parent.children[0].style.backgroundColor = colorFuture
             parent.children[2].style.backgroundColor = colorFuture
-        } else {
-            if (temp.isBetween(index, nextIndex)) {
-                console.log('temp')
-                parent.children[0].style.backgroundColor = colorPresent
-                parent.children[2].style.backgroundColor = colorPresent
-            } else {
-                parent.children[0].style.backgroundColor = colorPast
-                parent.children[2].style.backgroundColor = colorPast
-                parent.children[2].children[0].children[0].setAttribute('src', done)
-                parent.children[1].disabled = true
-                parent.children[2].children[0].disabled = true
-            }
         }
+
 
     }
     var time = setInterval(function () {
