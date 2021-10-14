@@ -2,12 +2,15 @@
   --save:#cccccc;
   --delete: #000000;
   --time: #000000;
-  --past: #e4e4e4;
+  --past: #e7eaf0;
   --present: #fae5a0;
-  --future: #dbe3f0;
+  --future: #d7dce4;
   --hover:#ffffff;
   --error:#fff3f3;
 
+}
+*{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 li {
   padding: 0px 10px;
@@ -55,10 +58,10 @@ button:hover{
   margin: 1% 5%;
 }
 .form-control {
-  height: 75px;
+  height: 65px;
 }
 .input-group-text {
-  background-color: var(--future);
+  background-color: var(--present);
   font-size: 2rem;
 }
 .time-block {
