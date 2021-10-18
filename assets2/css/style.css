@@ -14,18 +14,20 @@
 }
 li {
   padding: 0px 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 10px;
   line-height: 1;
 }
 .input-group {
   padding: 5px 0px;
 }
-
+span {
+  height: 50px;
+}
 textarea {
   background: transparent;
   border: none;
@@ -42,14 +44,14 @@ textarea {
 img {
   pointer-events: none;
   filter: var(--save);
-  width: 25%;
+  width: 15%;
 }
 button:hover{
   background-color: var(--save);
 }
 
 .day {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 .mycontainer {
   display: flex;
@@ -58,18 +60,19 @@ button:hover{
   margin: 1% 5%;
 }
 .form-control {
-  height: 65px;
+  height:50px;
 }
 .input-group-text {
   background-color: var(--present);
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .time-block {
   text-align: center;
   border-radius: 15px;
 }
 .jumbotron {
-  padding-top: 25px;
+  height: 100px;
+  padding: 0%;
 }
 #currentDay {
   padding-top: 25px;
@@ -78,7 +81,7 @@ button:hover{
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
+  height: 50px;
   border-top: 1px solid white;
 }
 
@@ -102,7 +105,9 @@ button:hover{
   background-color: var(--future);
   color: white;
 }
-
+.btn {
+  padding: 0%;
+}
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;

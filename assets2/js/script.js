@@ -2,9 +2,9 @@ const currentday = document.querySelector('#currentDay')
 const formcontrol = document.querySelectorAll('.form-control')
 const morning = document.querySelector('.morning')
 const evening = document.querySelector('.evening')
-const add = '../Assets/images/add.svg'
-const remove = '../Assets/images/remove.svg'
-const done = '../Assets/images/done.svg'
+const add = './assets2/images/add.svg'
+const remove = './assets2/images/remove.svg'
+const done = '../assets2/images/done.svg'
 const colorPast = '#e7eaf0'
 const colorPresent = '#fae5a0'
 const colorFuture = '#d5e0f6'
@@ -18,19 +18,16 @@ function SetCurrentTime() {
     for (let i = 0; i < timecheck.length; i++) {
         const index = timecheck[i];
         const nextIndex = timecheck[i + 1]
+        var now = moment('2:00pm', 'h:mma')
         var time = moment(index, 'h:mma')
         var nexttime = moment(nextIndex, 'h:mma')
         var parent = document.getElementById(index)
+        if (moment().isBefore(time)) {
+            parent.children[0].style.backgroundColor = colorFuture
+            parent.children[2].style.backgroundColor = colorFuture
 
-        if (moment().isSameOrAfter(nexttime)) {
-            parent.children[0].style.backgroundColor = colorPast
-            parent.children[2].style.backgroundColor = colorPast
-            parent.children[2].children[0].children[0].setAttribute('src', done)
-            parent.children[1].disabled = true
-            parent.children[1].setAttribute('placeholder','Closed')
-            parent.children[2].children[0].disabled = true
 
-        } else if (moment().isSameOrAfter(time) && moment().isSameOrBefore(nexttime)) {
+        } else if (moment().isSameOrAfter(time) && moment().isBefore(nexttime)) {
             parent.children[0].style.backgroundColor = colorPresent
             parent.children[2].style.backgroundColor = colorPresent
             parent.children[2].children[0].children[0].setAttribute('src', done)
@@ -39,8 +36,12 @@ function SetCurrentTime() {
             parent.children[2].children[0].disabled = true
 
         } else {
-            parent.children[0].style.backgroundColor = colorFuture
-            parent.children[2].style.backgroundColor = colorFuture
+            parent.children[0].style.backgroundColor = colorPast
+            parent.children[2].style.backgroundColor = colorPast
+            parent.children[2].children[0].children[0].setAttribute('src', done)
+            parent.children[1].disabled = true
+            parent.children[1].setAttribute('placeholder','Closed')
+            parent.children[2].children[0].disabled = true
         }
 
 
@@ -121,13 +122,12 @@ CreateList(morning, 'm')
 CreateList(evening, 'e')
 FetchData('m')
 FetchData('e')
-console.log(timecheck)
 SetCurrentTime()
 
-function CreateList(x, y) {
+function CreateList(m, e) {
     var int
     var ampm
-    if (y == "m") { int = 6; ampm = "am" } else { int = 11; ampm = "pm" }
+    if (e == "m") { int = 6; ampm = "am" } else { int = 11; ampm = "pm" }
     for (let i = 0; i < 10; i++) {
         var parity
         if (i % 2 === 0) { parity = '00'; int++ } else { parity = '30' }
@@ -154,9 +154,9 @@ function CreateList(x, y) {
         input.setAttribute('class', 'form-control')
         input.setAttribute('placeholder', 'Open')
         input.setAttribute('aria-label', 'open')
-        input.setAttribute('data-index', y + i)
+        input.setAttribute('data-index', e + i)
         input.setAttribute('aria-describedby', 'addon-wrapping')
-        input.setAttribute('id', y + i)
+        input.setAttribute('id', e + i)
         div.appendChild(input)
 
         span2.setAttribute('class', 'input-group-text', 'd-flex', 'justify-content-center')
@@ -172,12 +172,12 @@ function CreateList(x, y) {
 
         img.setAttribute('src', add)
         img.setAttribute('alt', 'save schedule')
-        img.setAttribute('style', 'width: 100%')
+        img.setAttribute('style', 'width: 80%')
         div.appendChild(img)
         span2.appendChild(img)
         btn.appendChild(img)
 
-        x.appendChild(div)
+        m.appendChild(div)
     }
 
 }
